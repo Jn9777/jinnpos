@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: hsl(210, 100%, 40%);
+  --color-primary-foreground: hsl(0, 0%, 100%);
+  --color-primary-hover: hsl(210, 100%, 35%);
+  --color-secondary: hsl(210, 100%, 50%);
+  --color-accent: hsl(29, 100%, 52%);
+  --color-success: hsl(157, 100%, 35%);
+  --color-warning: hsl(29, 100%, 52%);
+  --color-error: hsl(4, 80%, 45%);
+  --color-background: hsl(0, 0%, 96%);
+  --color-foreground: hsl(0, 0%, 10%);
+  --color-border: hsl(0, 0%, 80%);
+  --color-card: hsl(0, 0%, 100%);
+  --font-sans: 'Inter', 'Roboto', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+html, body {
+  background-color: hsl(0, 0%, 96%);
+  color: hsl(0, 0%, 10%);
+  font-family: 'Inter', 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+html.dark, html.dark body {
+  background-color: hsl(222, 18%, 11%);
+  color: hsl(0, 0%, 93%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Custom scrollbar — light */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(0, 0%, 90%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(0, 0%, 70%);
+  border-radius: 9999px;
+}
+
+/* Custom scrollbar — dark */
+.dark ::-webkit-scrollbar-track {
+  background: hsl(222, 18%, 18%);
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: hsl(222, 18%, 35%);
+  border-radius: 9999px;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 3px solid hsl(210, 100%, 70%);
+  outline-offset: 2px;
+}
+
+/* Touch feedback */
+.touch-feedback {
+  transition: transform 100ms ease-in-out;
+}
+.touch-feedback:active {
+  transform: scale(0.96);
+}
+
+/* Tabular numbers */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
