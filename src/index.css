@@ -44,39 +44,69 @@ html.dark, html.dark body {
   color: hsl(0, 0%, 93%);
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
+/* 滚动条 */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: hsl(0, 0%, 90%); }
 ::-webkit-scrollbar-thumb { background: hsl(0, 0%, 70%); border-radius: 9999px; }
 .dark ::-webkit-scrollbar-track { background: hsl(222, 18%, 18%); }
 .dark ::-webkit-scrollbar-thumb { background: hsl(222, 18%, 35%); border-radius: 9999px; }
-
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 
+/* 交互 */
 *:focus-visible { outline: 3px solid hsl(210, 100%, 70%); outline-offset: 2px; }
 .touch-feedback { transition: transform 100ms ease-in-out; }
 .touch-feedback:active { transform: scale(0.96); }
 .tabular-nums { font-variant-numeric: tabular-nums; }
 
-/* 移动端自适应缩放 */
+/* ========================================
+   🔑 移动端自适应缩放（核心功能）
+   ======================================== */
+
+/* 超小屏幕手机（< 375px）- 整体缩小到 0.85 */
 @media screen and (max-width: 374px) {
-  #root { transform: scale(0.85); transform-origin: top center; width: 117.65%; }
+  #root {
+    transform: scale(0.85);
+    transform-origin: top center;
+    width: 117.65%;
+  }
   html { font-size: 12px !important; }
 }
+
+/* 小屏幕手机（375px - 414px）- 缩小到 0.9 */
 @media screen and (min-width: 375px) and (max-width: 414px) {
-  #root { transform: scale(0.9); transform-origin: top center; width: 111.11%; }
+  #root {
+    transform: scale(0.9);
+    transform-origin: top center;
+    width: 111.11%;
+  }
   html { font-size: 13px !important; }
 }
-@media screen and (min-width: 415px) {
+
+/* 标准手机（415px - 767px）- 正常 */
+@media screen and (min-width: 415px) and (max-width: 767px) {
   #root { transform: scale(1); width: 100%; }
   html { font-size: 14px !important; }
 }
 
-/* 横屏适配 */
+/* 平板（768px - 1024px）- 正常 */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  #root { transform: scale(1); width: 100%; }
+  html { font-size: 15px !important; }
+}
+
+/* 桌面（> 1024px）- 正常 */
+@media screen and (min-width: 1025px) {
+  #root { transform: scale(1); width: 100%; }
+  html { font-size: 16px !important; }
+}
+
+/* ========================================
+   横屏适配
+   ======================================== */
+
 @media screen and (orientation: landscape) and (max-height: 500px) {
   html { font-size: 12px !important; }
   body { overflow-x: hidden; }
@@ -88,7 +118,15 @@ html.dark, html.dark body {
   input, select, textarea { font-size: 16px !important; }
 }
 
-/* Dark Mode 对比度 */
+@media screen and (orientation: landscape) {
+  * { max-width: 100vw; }
+  body { overflow-x: hidden; }
+}
+
+/* ========================================
+   Dark Mode 对比度
+   ======================================== */
+
 .dark .text-neutral-500 { color: hsl(0, 0%, 65%) !important; }
 .dark .text-neutral-400 { color: hsl(0, 0%, 75%) !important; }
 .dark .font-bold, .dark .font-semibold { color: hsl(0, 0%, 95%) !important; }
